@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   sodipodi:docname="silkscreen-bottom.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="5.1733787"
+     inkscape:cx="91.719557"
+     inkscape:cy="100.90118"
+     inkscape:window-width="1918"
+     inkscape:window-height="1178"
+     inkscape:window-x="1920"
+     inkscape:window-y="20"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showgrid="false" />
+  <defs
+     id="defs1">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect2"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="C,0,0,1,0,4.9999999,0,1 @ C,0,0,1,0,4.9999999,0,1 @ C,0,0,1,0,4.9999999,0,1 @ C,0,0,1,0,4.9999999,0,1"
+       radius="5"
+       unit="mm"
+       method="auto"
+       mode="C"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill;stroke-opacity:1"
+       id="rect1"
+       width="39"
+       height="39"
+       x="7.0990977"
+       y="5.6690631" />
+    <path
+       id="rect2"
+       style="fill:none;stroke-width:0.2;paint-order:markers stroke fill;stroke:#000000;stroke-opacity:1;stroke-dasharray:none"
+       d="M 19.099098,12.669064 H 34.099098 L 39.099098,17.669064 V 32.669064 L 34.099098,37.669064 H 19.099098 L 14.099098,32.669064 V 17.669064 Z"
+       inkscape:path-effect="#path-effect2"
+       inkscape:original-d="M 14.099098,12.669064 H 39.099098 V 37.669064 H 14.099098 Z" />
+  </g>
+</svg>

@@ -58,7 +58,7 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "domino-tile-pcb.kicad_prl",
+    "filename": "verschlusstabelle.kicad_prl",
     "version": 5
   },
   "net_inspector_panel": {
@@ -87,16 +87,16 @@
       9
     ],
     "col_widths": [
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      126,
-      1103
+      174,
+      159,
+      110,
+      73,
+      110,
+      110,
+      110,
+      78,
+      110,
+      275
     ],
     "custom_group_rules": [],
     "expanded_rows": [],
