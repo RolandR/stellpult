@@ -1,6 +1,6 @@
 
 #define srclk 2
-#define srclr 3
+#define oe 3
 #define rclk 4
 #define ser 5
 #define p6 6
@@ -15,7 +15,8 @@
 
 const int smallDelay = 0;
 
-const unsigned int mine = 0b01110011;
+const unsigned int one = 0b01110011;
+const unsigned int two = 0b00001111;
 
 unsigned int values[256];
 
@@ -26,7 +27,7 @@ void setup() {
   pinMode(srclk, OUTPUT);
   pinMode(ser, OUTPUT);
   pinMode(rclk, OUTPUT);
-  pinMode(srclr, OUTPUT);
+  pinMode(oe, OUTPUT);
   pinMode(p6, OUTPUT);
   pinMode(p7, OUTPUT);
 
@@ -40,7 +41,7 @@ void setup() {
   digitalWrite(srclk, LOW);
   digitalWrite(ser, LOW);
   digitalWrite(rclk, LOW);
-  digitalWrite(srclr, LOW);
+  digitalWrite(oe, LOW);
   digitalWrite(p6, LOW);
   digitalWrite(p7, LOW);
   
@@ -51,8 +52,6 @@ void setup() {
   digitalWrite(p12, LOW);
   digitalWrite(p13, LOW);
 
-  digitalWrite(srclr, HIGH);
-
   for(int i = 0; i < 256; i++){
     values[i] = random(pow(2, 16));
   }
@@ -61,66 +60,123 @@ void setup() {
 
 void loop() {
 
-  
+  //analogWrite(oe, 1020);
 
   //values[a] = random(pow(2, 16)-1);
   //updateAll();
 
   //delay(200);
 
-  /*display(0b1000000000000000);
-  display(0b0100000000000000);
-  display(0b0010000000000000);
-  display(0b0001000000000000);
-  display(0b0000100000000000);
-  display(0b0000010000000000);
-  display(0b0000001000000000);
-  display(0b0000000100000000);
-  display(0b0000000010000000);
-  display(0b0000000001000000);
-  display(0b0000000000100000);
-  display(0b0000000000010000);
-  display(0b0000000000001000);
-  display(0b0000000000000100);
-  display(0b0000000000000010);
-  display(0b0000000000000001);
-  display(0b0000000000000010);
-  display(0b0000000000000100);
-  display(0b0000000000001000);
-  display(0b0000000000010000);
-  display(0b0000000000100000);
-  display(0b0000000001000000);
-  display(0b0000000010000000);
-  display(0b0000000100000000);
-  display(0b0000001000000000);
-  display(0b0000010000000000);
-  display(0b0000100000000000);
-  display(0b0001000000000000);
-  display(0b0010000000000000);
-  display(0b0100000000000000);*/
+  /*values[one] = 0b1000000000000000);
+  values[one] = 0b0100000000000000);
+  values[one] = 0b0010000000000000);
+  values[one] = 0b0001000000000000);
+  values[one] = 0b0000100000000000);
+  values[one] = 0b0000010000000000);
+  values[one] = 0b0000001000000000);
+  values[one] = 0b0000000100000000);
+  values[one] = 0b0000000010000000);
+  values[one] = 0b0000000001000000);
+  values[one] = 0b0000000000100000);
+  values[one] = 0b0000000000010000);
+  values[one] = 0b0000000000001000);
+  values[one] = 0b0000000000000100);
+  values[one] = 0b0000000000000010);
+  values[one] = 0b0000000000000001);
+  values[one] = 0b0000000000000010);
+  values[one] = 0b0000000000000100);
+  values[one] = 0b0000000000001000);
+  values[one] = 0b0000000000010000);
+  values[one] = 0b0000000000100000);
+  values[one] = 0b0000000001000000);
+  values[one] = 0b0000000010000000);
+  values[one] = 0b0000000100000000);
+  values[one] = 0b0000001000000000);
+  values[one] = 0b0000010000000000);
+  values[one] = 0b0000100000000000);
+  values[one] = 0b0001000000000000);
+  values[one] = 0b0010000000000000);
+  values[one] = 0b0100000000000000);*/
 
-  display(0b1000000000000011);
-  display(0b1100000000000001);
-  display(0b1110000000000000);
-  display(0b0111000000000000);
-  display(0b0011100000000000);
-  display(0b0001110000000000);
-  display(0b0000111000000000);
-  display(0b0000011100000000);
-  display(0b0000001110000000);
-  display(0b0000000111000000);
-  display(0b0000000011100000);
-  display(0b0000000001110000);
-  display(0b0000000000111000);
-  display(0b0000000000011100);
-  display(0b0000000000001110);
-  display(0b0000000000000111);
-    
-}
-
-void display(unsigned int value){
-  values[mine] = value;
+  values[one] = 0b1000000000000011;
+  values[two] = 0b1000000110000001;
   updateAll();
+  
+  values[one] = 0b1100000000000001;
+  values[two] = 0b0100001001000010;
+  updateAll();
+  
+  values[one] = 0b1110000000000000;
+  values[two] = 0b0010010000100100;
+  updateAll();
+  
+  values[one] = 0b0111000000000000;
+  values[two] = 0b0001100000011000;
+  updateAll();
+  
+  values[one] = 0b0011100000000000;
+  values[two] = 0b1000000110000001;
+  updateAll();
+  
+  values[one] = 0b0001110000000000;
+  values[two] = 0b0100001001000010;
+  updateAll();
+  
+  values[one] = 0b0000111000000000;
+  values[two] = 0b0010010000100100;
+  updateAll();
+  
+  values[one] = 0b0000011100000000;
+  values[two] = 0b0001100000011000;
+  updateAll();
+  
+  values[one] = 0b0000001110000000;
+  updateAll();
+  
+  values[one] = 0b0000000111000000;
+  updateAll();
+  
+  values[one] = 0b0000000011100000;
+  updateAll();
+  
+  values[one] = 0b0000000001110000;
+  updateAll();
+  
+  values[one] = 0b0000000000111000;
+  updateAll();
+  
+  values[one] = 0b0000000000011100;
+  updateAll();
+  
+  values[one] = 0b0000000000001110;
+  updateAll();
+  
+  values[one] = 0b0000000000000111;
+  updateAll();
+  
+
+
+  /*for(int i = 0; i < 5; i++){
+    values[one] = 0b0000000000000000);
+    delay(700);
+    values[one] = 0b0001000000000000);
+    delay(700);
+  }
+
+  values[one] = 0b0011000000000000);
+  delay(5000);
+
+  values[one] = 0b0010000000000000);
+  delay(200);
+
+  values[one] = 0b0110000000000000);
+  delay(5000);
+
+  values[one] = 0b0100000000000000);
+  delay(5000);
+
+  values[one] = 0b0000000000000000);
+  delay(2000);*/
 }
 
 void updateAll(){
@@ -128,6 +184,8 @@ void updateAll(){
     setAddress(i);
     shiftOut(values[i]);
   }
+
+  //shiftOut(values[mine]);
 }
 
 
@@ -148,10 +206,18 @@ void shiftOut(unsigned int data){
   for (byte j = 0; j < 16; j++){
     bit = (data >> j) & 0x01;
     digitalWrite(ser, bit); 
+    //delay(smallDelay);
     digitalWrite(srclk, HIGH);
+    //delay(smallDelay);
     digitalWrite(srclk, LOW);
+    //delay(smallDelay);
   }
 
   digitalWrite(rclk, HIGH);
+  //delay(smallDelay);
   digitalWrite(rclk, LOW);
+  //delay(smallDelay);
+
+  //delay(1);
+  
 }
