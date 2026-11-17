@@ -24,9 +24,42 @@ unsigned int buttons[256];
 
 byte one = 109;
 
+unsigned int pattern[30] = {
+  0b1000000000000000,
+  0b0100000000000000,
+  0b0010000000000000,
+  0b0001000000000000,
+  0b0000100000000000,
+  0b0000010000000000,
+  0b0000001000000000,
+  0b0000000100000000,
+  0b0000000010000000,
+  0b0000000001000000,
+  0b0000000000100000,
+  0b0000000000010000,
+  0b0000000000001000,
+  0b0000000000000100,
+  0b0000000000000010,
+  0b0000000000000001,
+  0b0000000000000010,
+  0b0000000000000100,
+  0b0000000000001000,
+  0b0000000000010000,
+  0b0000000000100000,
+  0b0000000001000000,
+  0b0000000010000000,
+  0b0000000100000000,
+  0b0000001000000000,
+  0b0000010000000000,
+  0b0000100000000000,
+  0b0001000000000000,
+  0b0010000000000000,
+  0b0100000000000000,
+};
+
 void setup() {
   
-  Serial.begin(9600);
+  Serial.begin(2000000);
   
   pinMode(addrMode, OUTPUT);
   pinMode(copi, OUTPUT);
@@ -46,7 +79,6 @@ void setup() {
   }
 
   SPI.begin();
-  SPI.beginTransaction(SPISettings(500000, LSBFIRST, SPI_MODE0));
 
 }
 
@@ -81,66 +113,15 @@ void loop() {
   set(0b1111110000000011);
   set(0b1111111000000001);*/
   
-  values[one] = 0b1000000000000000;
-  updateAll();
-  /*values[one] = 0b0100000000000000;
-  updateAll();
-  values[one] = 0b0010000000000000;
-  updateAll();
-  values[one] = 0b0001000000000000;
-  updateAll();
-  values[one] = 0b0000100000000000;
-  updateAll();
-  values[one] = 0b0000010000000000;
-  updateAll();
-  values[one] = 0b0000001000000000;
-  updateAll();
-  values[one] = 0b0000000100000000;
-  updateAll();
-  values[one] = 0b0000000010000000;
-  updateAll();
-  values[one] = 0b0000000001000000;
-  updateAll();
-  values[one] = 0b0000000000100000;
-  updateAll();
-  values[one] = 0b0000000000010000;
-  updateAll();
-  values[one] = 0b0000000000001000;
-  updateAll();
-  values[one] = 0b0000000000000100;
-  updateAll();
-  values[one] = 0b0000000000000010;
-  updateAll();
-  values[one] = 0b0000000000000001;
-  updateAll();
-  values[one] = 0b0000000000000010;
-  updateAll();
-  values[one] = 0b0000000000000100;
-  updateAll();
-  values[one] = 0b0000000000001000;
-  updateAll();
-  values[one] = 0b0000000000010000;
-  updateAll();
-  values[one] = 0b0000000000100000;
-  updateAll();
-  values[one] = 0b0000000001000000;
-  updateAll();
-  values[one] = 0b0000000010000000;
-  updateAll();
-  values[one] = 0b0000000100000000;
-  updateAll();
-  values[one] = 0b0000001000000000;
-  updateAll();
-  values[one] = 0b0000010000000000;
-  updateAll();
-  values[one] = 0b0000100000000000;
-  updateAll();
-  values[one] = 0b0001000000000000;
-  updateAll();
-  values[one] = 0b0010000000000000;
-  updateAll();
-  values[one] = 0b0100000000000000;
-  updateAll();*/
+  for(int i = 0; i < 30; i++){
+    /*for(int u = 0; u < 30; u++){
+      set(pattern[i]);
+    }*/
+
+    set(pattern[i]);
+  }
+
+  //printButton(one);
 
 }
 
@@ -149,9 +130,19 @@ void set(unsigned int value){
   updateAll();
 }
 
+void checkButtons(unsigned int i, unsigned int value){
+  if(buttons[i] == value){
+    return;
+  } else {
+    buttons[i] = value;
+    printButton(i);
+  }
+}
+
 void updateAll(){
   for(unsigned int i = 0; i < 256; i++){
     buttons[i] = readWrite(i, values[i]);
+    printButton(i);
   }
 
   /*int i = 74;
@@ -166,14 +157,17 @@ void updateAll(){
   i = 89;
   buttons[i] = (byte)readWrite(i, values[i]);*/
 
-  printButton(one);
   
-  //delay(100);
+  
+  delay(1000);
 }
 
 void printButton(byte index){
 
   unsigned int value = buttons[index];
+
+  Serial.print(index);
+  Serial.print(": ");
   
   for(int u = 0; u < 16; u++){
     
@@ -190,9 +184,18 @@ void printButton(byte index){
   Serial.println();
 }
 
+void printButtoon(byte index){
+  
+  String outStr = String(String(index)+": "+String(buttons[index], BIN));
+  
+  Serial.println(outStr);
+}
+
 unsigned int readWrite(byte address, unsigned int data){
 
-  digitalWrite(addrMode, LOW);
+  SPI.beginTransaction(SPISettings(6000000, LSBFIRST, SPI_MODE0));
+
+  //digitalWrite(addrMode, LOW);
   
   SPI.transfer(address);
 
@@ -202,9 +205,11 @@ unsigned int readWrite(byte address, unsigned int data){
 
   unsigned int result = SPI.transfer16(data);
 
-  //delay(0);
+  delay(0);
 
   digitalWrite(addrMode, LOW);
+
+  SPI.endTransaction();
 
   return result;
 }
